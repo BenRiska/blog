@@ -1,38 +1,104 @@
-.App {
-  text-align: center;
+:root {
+  --yellow: #f2da87;
+  --white: #ffffff;
+  --cursor-ring: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  cursor: url(./assets/white-cursor.svg), default;
+}
+
+.book {
+  height: 55vh;
+  position: absolute;
+  top: 20vh;
+  right: 5vw;
+  z-index: -1;
+}
+
+.cursor {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.landing-z {
+  z-index: -1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.white-icon {
+  position: absolute;
+  top: 2.5rem;
+  left: 6vh;
+  height: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.sound-icon {
+  position: absolute;
+  top: 3.3rem;
+  left: 10vh;
+  height: 30px;
+  opacity: 0.4;
+  height: 20px;
+  transition: opacity 0.4s ease;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sound-icon:hover {
+  opacity: 1;
+}
+
+.resizer {
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  background-color: #f2da87;
+  z-index: 5;
+  display: grid;
+  place-content: center;
+}
+
+.resizer > p {
+  font-weight: 550;
+  font-size: 1.4rem;
+}
+
+.static-link {
+  position: absolute;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.say-hi {
+  top: 6vh;
+  right: 6vh;
+}
+
+.portfolio {
+  bottom: 6vh;
+  left: 6vh;
+}
+
+.github {
+  bottom: 6vh;
+  right: 6vh;
+}
+
+.cursor:before {
+  content: "";
+  position: absolute;
+  top: -22px;
+  left: -22px;
+  display: block;
+  width: 60px;
+  height: 60px;
+  transform: scale(1);
+  background: transparent;
+  border: 2px solid var(--cursor-ring);
+  transition: border 0.3s ease;
+  border-radius: 50%;
+  z-index: 10;
 }
