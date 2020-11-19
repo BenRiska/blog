@@ -1,0 +1,43 @@
+.list {
+  max-height: 91vh;
+}
+
+.list > div {
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease;
+  opacity: 0;
+  transform: translatey(100px);
+  z-index: -1;
+}
+
+.list > div:hover {
+  background: rgba(210, 208, 213, 0.15);
+}
+
+.list > div > h1 {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.list > div > span {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-content: center;
+}
+
+.list > span {
+  display: block;
+  margin: 5rem 0;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: line-through;
+  opacity: 0;
+  transform: translatey(30px);
+}
+
+.list > span > img {
+  margin-right: 10px;
+}

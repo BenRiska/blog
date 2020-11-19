@@ -22,6 +22,8 @@
   width: 10vw;
   max-width: 180px;
   margin-bottom: 10vh;
+  position: relative;
+  z-index: 2000;
 }
 .music-selector {
   padding-top: 25px;
