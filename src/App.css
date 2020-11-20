@@ -2,12 +2,15 @@
   --yellow: #f2da87;
   --white: #ffffff;
   --cursor-ring: #ffffff;
+  --bg: #ffffff;
+  --normal-text-color: black;
 }
 
 body {
   cursor: url(./assets/white-cursor.svg), default;
   max-height: 100vh !important;
   overflow: hidden;
+  background-color: var(--bg);
 }
 
 .book {
@@ -80,13 +83,14 @@ body {
   top: 5vh;
   right: 5vh;
   cursor: url(./assets/hand.svg), default !important;
+  color: var(--normal-text-color);
 }
 
 .say-hi:hover::after {
   content: "don't be shy";
   position: absolute;
   left: -130%;
-  color: black;
+  color: var(--normal-text-color);
   transition: all 0.3s ease;
   animation: link-animation 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
     forwards running;
@@ -101,7 +105,7 @@ body {
 .portfolio > a {
   cursor: url(./assets/left-arrow.svg), default !important;
   text-decoration: none;
-  color: black;
+  color: var(--normal-text-color);
 }
 
 .portfolio:hover::after {
@@ -110,6 +114,7 @@ body {
   right: -110%;
   animation: link-animation 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
     forwards running;
+  color: var(--normal-text-color);
 }
 
 .github {
@@ -121,7 +126,7 @@ body {
 .github > a {
   cursor: url(./assets/right-arrow.svg), default !important;
   text-decoration: none;
-  color: black;
+  color: var(--normal-text-color);
 }
 
 .github:hover::after {
@@ -131,6 +136,7 @@ body {
   transition: all 0.3s ease;
   animation: link-animation 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
     forwards running;
+  color: var(--normal-text-color);
 }
 
 .cursor:before {
@@ -161,7 +167,8 @@ body {
 .copy-link {
   height: 35px;
   width: 35px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--normal-text-color);
+  opacity: 0.2;
   display: grid;
   place-items: center;
   margin-bottom: 30px;
@@ -177,6 +184,7 @@ body {
 .insta:hover {
   background: url(./assets/insta-yellow.svg) no-repeat;
   background-position: 50%;
+  opacity: 1;
 }
 
 .copy-link {
@@ -198,6 +206,7 @@ body {
 .copy-link:hover {
   background: url(./assets/copy-link-yellow.svg) no-repeat;
   background-position: 50%;
+  opacity: 1;
 }
 
 .linkedin {
@@ -209,12 +218,13 @@ body {
 .linkedin:hover {
   background: url(./assets/linkedin-yellow.svg) no-repeat;
   background-position: 50%;
+  opacity: 1;
 }
 
 .linkedin:hover,
 .insta:hover,
 .copy-link:hover {
-  border: 1px solid var(--yellow);
+  border: 2px solid var(--yellow);
 }
 
 @keyframes link-animation {

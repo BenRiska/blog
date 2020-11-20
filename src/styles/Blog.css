@@ -6,15 +6,17 @@
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  width: 500px;
+  width: 600px;
   opacity: 0;
   transform: translatey(200%);
+  color: var(--normal-text-color);
 }
 
 .options {
-  padding: 3rem 0;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
+  position: sticky;
 }
 
 .back {
@@ -40,16 +42,19 @@
 
 .font-size > span {
   margin-left: 15px;
-  color: rgba(0, 0, 0, 0.2);
+  color: var(--normal-text-color);
+  opacity: 0.4;
   transition: color 0.3s ease;
 }
 
 .font-size > span:hover {
-  color: black;
+  color: var(--normal-text-color);
+  opacity: 1;
 }
 
 .font-size > span.selected {
-  color: black;
+  color: var(--normal-text-color);
+  opacity: 1;
 }
 
 .small-font {
@@ -67,13 +72,28 @@
 .dark-mode {
   width: 40px;
   height: 15px;
-  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  border: 0.5px solid var(--normal-text-color);
+  opacity: 0.4;
   border-radius: 999px;
   margin-left: 50px;
+  transition: opacity 0.3s ease;
+}
+
+.dark-mode:hover {
+  opacity: 1;
+}
+
+.blog-content {
+  max-height: 90vh;
+  overflow: scroll;
+}
+
+.blog-content::-webkit-scrollbar {
+  display: none;
 }
 
 .header {
-  margin-top: 2rem;
+  margin: 1.5rem 0;
 }
 
 .header-info {
@@ -85,7 +105,8 @@
 }
 
 .header-time {
-  color: rgba(0, 0, 0, 0.3);
+  color: var(--normal-text-color);
+  opacity: 0.4;
   font-size: 12px;
 }
 
@@ -95,4 +116,72 @@
   font-weight: 500;
   padding-bottom: 3rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.blog-subtitle {
+  font-size: 26px;
+  font-weight: 500;
+  margin: 2rem 0;
+}
+
+.blog-body > p {
+  font-size: 22px;
+  margin: 1.5rem 0;
+  opacity: 0.8;
+}
+
+.blog-body > ul {
+  list-style: none;
+}
+
+.blog-body > ul > li {
+  font-size: 20px;
+  padding: 1rem 0;
+  opacity: 0.9;
+}
+
+.blog-body > ul > li > span {
+  color: var(--normal-text-color);
+  opacity: 0.3;
+}
+
+.blog-body > img {
+  object-fit: contain;
+  width: 600px;
+  margin: 1rem 0;
+}
+
+.blog-footer {
+}
+
+.footer-media {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5rem 0;
+}
+
+.footer-media > p {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.media-links {
+  display: flex;
+}
+
+.media-links > a,
+.media-links > div {
+  margin-left: 1.5rem;
+  margin-bottom: 0;
+}
+
+.footer-read-more {
+  text-align: center;
+  color: var(--normal-text-color);
+  opacity: 0.4;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid var(--normal-text-color);
+  margin-bottom: 3rem;
+  font-size: 12px;
 }
