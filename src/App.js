@@ -1,4 +1,4 @@
-import bookVid from "./assets/book.mov";
+
 import './App.css';
 import Landing from "./components/Landing";
 import {useEffect, useState} from "react"
@@ -10,6 +10,8 @@ import soundIcon from "./assets/sound.svg"
 import pianoMusic from "./assets/Magical-Piano-Version.mp3"
 import Blogs from "./components/Blogs";
 import Blog1 from "./components/Blog1";
+import { Switch, Route, useHistory } from "react-router-dom";
+
 
 
 let tl = gsap.timeline();
@@ -19,6 +21,7 @@ const homeAnimation = () => {
     scale: 0,
     duration: 0.9,
     ease: "expo.inOut",
+    zIndex: -1,
     transformOrigin: "bottom"
   })
 }
@@ -44,17 +47,12 @@ const showBlogAnimation = (blog) => {
   })
 }
 
-const removeBlogAnimation = (blog) => {
+const removeBlogAnimation = (blog, f) => {
   tl.to(`.blog-${blog}`, {
     duration: 1,
     opacity: 0,
-    y: 200
-  }).to(".blogs, .book", {
-    y: 0,
-    duration: 1.2,
-    opacity: 1,
-    transformOrigin: "top center",
-    ease: "power4.out"
+    y: 200,
+    onComplete: f
   })
 }
 
@@ -62,24 +60,21 @@ function App() {
 
   const [landed, setLanded] = useState(false);
   const [music, setMusic] = useState(false);
-  const [blogSelected, setBlogSelected] = useState(false)
-  const [selectedBlog, setSelectedBlog] = useState(null)
+  
 
-  const handleBlogSelection = (blogId) => {
-    setBlogSelected(true);
-    setSelectedBlog(blogId);
-    prepBlogAnimation(e => showBlogAnimation(blogId))
+  let history = useHistory();
+
+
+  const handleBlogSelection = (blogId, blogName) => {
+    prepBlogAnimation(e => history.push(`/${blogName}`))
   }
-
-  useEffect(() => {
-    console.log(blogSelected, selectedBlog)
-  }, [blogSelected, selectedBlog])
 
 
   const autoLandAnimation = () => {
     const body = document.querySelector("body");
     const indexElements = document.querySelectorAll(".landing-z") 
     if(!landed){
+      homeAnimation()
       indexElements.forEach(el => {
         el.style.zIndex = 1;
         el.style.opacity = 1;
@@ -87,7 +82,6 @@ function App() {
       body.style.cursor = `url(${yellowCursor}), default`;
       document.documentElement.style
                 .setProperty('--cursor-ring', '#f2da87');
-      homeAnimation()
       setLanded(true)
     }
   }
@@ -133,12 +127,8 @@ function App() {
       <Landing playMusic={playMusic} landAnimation={autoLandAnimation}/>
       <img src={soundIcon} onClick={() => setMusic(!music)} alt="main page icon" className="sound-icon landing-z"/>
       <img src={whiteIcon} alt="main page icon" className="white-icon landing-z"/>
-      <Blogs handleBlogSelection={handleBlogSelection}/>
       <audio loop className="piano" src={pianoMusic}></audio>
       <div className="cursor"></div>
-      <video className="book" autoPlay muted  playsInline loop preload="none" >
-        <source src={bookVid}  type="video/mp4"/>
-      </video>
       <div className="socials landing-z">
         <a rel="noreferrer" target="_blank" href="https://www.instagram.com/featurefield/?hl=en" className="insta">
         </a>
@@ -150,7 +140,16 @@ function App() {
       <span className="say-hi static-link landing-z">say hi.</span>
       <span className="portfolio static-link landing-z"><a rel="noreferrer" target="_blank" href="https://portfolio-11585.web.app/">portfolio.</a></span>
       <span className="github static-link landing-z"><a rel="noreferrer" target="_blank" href="https://github.com/BenRiska">github.</a></span>
-      <Blog1 removeBlogAnimation={removeBlogAnimation}/>
+      <div className="landing-z">
+      <Switch>
+          <Route path="/how-to-be-the-best-at-everything">
+              <Blog1 showBlogAnimation={showBlogAnimation} removeBlogAnimation={removeBlogAnimation}/>
+          </Route>
+          <Route path="/">
+             <Blogs landed={landed} handleBlogSelection={handleBlogSelection}/>
+          </Route>
+      </Switch>
+      </div>
     </div>
   );
 }

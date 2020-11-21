@@ -7,6 +7,7 @@ import {gsap} from "gsap"
 import Grid from './Grid'
 import List from './List'
 import blogTitles from "../blogTitles.js"
+import bookVid from "../assets/book.mov";
 
 
 
@@ -72,7 +73,7 @@ const showListItems = () => {tl.to(".list-item", {
 })}
 
 const removeListItems = (setGrid) => {tl.to(".list > span", {
-    duration: .5,
+    duration: .1,
     opacity: 0,
     y: 30,
     ease: "power4.out",
@@ -87,16 +88,26 @@ const removeListItems = (setGrid) => {tl.to(".list > span", {
       onComplete: setGrid
 })}
 
+const easeBookAnimation = () => {
+    tl.from(".book, .blog-toggle", {
+        duration: 2,
+        opacity: 0,
+        ease: "power4.out",
+    })
+}
 
 
 
-function Blogs({handleBlogSelection}) {
+
+
+function Blogs({handleBlogSelection, landed}) {
 
     const [dropdown, setDropdown] = useState(false)
     const [topic, setTopic] = useState("All")
     const [grid, setGrid] = useState(false)
     const [gridIcon, setGridIcon] = useState(false)
     const [blogs, setBlogs] = useState(blogTitles)
+    const [easeBook, setEaseBook] = useState(true)
 
     const handleDropdown = () => {
         if(dropdown){
@@ -107,6 +118,18 @@ function Blogs({handleBlogSelection}) {
             setDropdown(true)
         }
     }
+
+    useEffect(() => {
+        if(landed){
+        const blogToggle = document.querySelector(".blog-toggle") 
+        const layout = document.querySelector(".layout-container")
+            blogToggle.style.opacity = 1;
+            blogToggle.style.zIndex = 1;
+            layout.style.opacity = 1;
+            layout.style.zIndex = 1;
+
+        }
+    }, [])
 
     const handleSelect = choice => {
         handleDropdown()
@@ -140,8 +163,16 @@ function Blogs({handleBlogSelection}) {
 
     useEffect(() => {
         if(grid){
+            if(easeBook){
+                easeBookAnimation()
+                setEaseBook(false)
+            }
             showGridItems()
         } else{
+            if(easeBook){
+                easeBookAnimation()
+                setEaseBook(false)
+            }
             showListItems()
         }
     }, [grid, blogs])
@@ -149,7 +180,12 @@ function Blogs({handleBlogSelection}) {
 
 
     return (
+        <>
+        <video className="book" autoPlay muted  playsInline loop preload="none" >
+                <source src={bookVid}  type="video/mp4"/>
+             </video>
         <div className="blogs">
+            
             <div className="blog-toggle landing-z">
                 <div className="blog-topics">
                     <span>You are reading</span>
@@ -179,6 +215,7 @@ function Blogs({handleBlogSelection}) {
             {grid ? (<Grid handleBlogSelection={handleBlogSelection} blogs={blogs}/>) : (<List handleBlogSelection={handleBlogSelection} blogs={blogs}/>)}
             </div>
         </div>
+        </>
     )
 }
 

@@ -1,12 +1,51 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "../styles/Blog.css"
 import leftArrowIcon from "../assets/left-arrow-grey2.svg"
 import leftArrowIconDark from "../assets/left-arrow-grey2-dark.svg"
 import highwayPhoto from "../assets/highway.jpg";
+import { useHistory } from "react-router-dom";
+import sunIcon from "../assets/sun.svg"
+import moonIcon from "../assets/moon-stars.svg"
 
-function Blog1({removeBlogAnimation}) {
+function Blog1({showBlogAnimation, removeBlogAnimation}) {
 
     const [darkMode, setDarkMode] = useState(false)
+    const [fontSize, setFontSize] = useState("medium")
+
+    let history = useHistory();
+
+    useEffect(() => {
+        console.log("hi")
+        showBlogAnimation(1)
+    }, [])
+
+    const handleFontChange = (size) => {
+        if(size == "small"){
+            setFontSize(size)
+            document.documentElement.style
+            .setProperty('--blog-text', '16px');
+            document.documentElement.style
+            .setProperty('--blog-title-text', '30px');
+            document.documentElement.style
+            .setProperty('--blog-subtitle-text', '24px');
+        } else if(size ==="medium"){
+            setFontSize(size)
+            document.documentElement.style
+            .setProperty('--blog-text', '22px');
+            document.documentElement.style
+            .setProperty('--blog-title-text', '36px');
+            document.documentElement.style
+            .setProperty('--blog-subtitle-text', '28px');
+        } else if (size === "large"){
+            setFontSize(size)
+            document.documentElement.style
+            .setProperty('--blog-text', '28px');
+            document.documentElement.style
+            .setProperty('--blog-title-text', '40px');
+            document.documentElement.style
+            .setProperty('--blog-subtitle-text', '34px');
+        }
+    }
 
    const  handleDarkMode = () => {
     if(!darkMode){
@@ -37,17 +76,23 @@ function Blog1({removeBlogAnimation}) {
                 <p onClick={e => {
                     const elementTop = document.querySelector(".blog-1 .header");
                     darkMode && handleDarkMode()
-                    elementTop.scrollIntoView()
-                    removeBlogAnimation(1)}} className="back">
+                    handleFontChange("medium")
+                    removeBlogAnimation(1, () => setTimeout(() => history.push("/"), 1000))
+                    }} className="back">
                     <img src={darkMode ? leftArrowIconDark : leftArrowIcon} alt="back icon"/> Back
                 </p>
                 <div className="option-controls">
                     <div className="font-size">
-                        <span className="small-font">A</span>
-                        <span className="medium-font selected">A</span>
-                        <span className="large-font">A</span>
+                        <span onClick={()=> handleFontChange("small")} className={fontSize === "small" ? "small-font selected" : "small-font"}>A</span>
+                        <span onClick={()=> handleFontChange("medium")}  className={fontSize === "medium" ? "medium-font selected" : "medium-font"}>A</span>
+                        <span onClick={()=> handleFontChange("large")}  className={fontSize === "large" ? "large-font selected" : "large-font"}>A</span>
                     </div>
-                    <div onClick={handleDarkMode} className="dark-mode"></div>
+                    <div onClick={handleDarkMode} className="dark-mode">
+                        <div className={darkMode ? "slider dark" : "slider light"}>
+                            <img className="sun" src={sunIcon} alt="light mode icon"/>
+                            <img className="moon" src={moonIcon} alt="light mode icon"/>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="blog-content">

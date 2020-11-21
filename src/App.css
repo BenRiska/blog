@@ -4,6 +4,9 @@
   --cursor-ring: #ffffff;
   --bg: #ffffff;
   --normal-text-color: black;
+  --blog-text: 22px;
+  --blog-title-text: 36px;
+  --blog-subtitle-text: 26px;
 }
 
 body {
@@ -176,7 +179,7 @@ body {
 }
 
 .insta {
-  background: url(./assets/insta-grey.svg) no-repeat;
+  background: url(./assets/insta.svg) no-repeat;
   background-position: 50%;
   cursor: url(./assets/yellow-cursor.svg), default;
 }
@@ -188,7 +191,7 @@ body {
 }
 
 .copy-link {
-  background: url(./assets/copy-link-grey.svg) no-repeat;
+  background: url(./assets/link.svg) no-repeat;
   background-position: 50%;
 }
 
@@ -210,7 +213,7 @@ body {
 }
 
 .linkedin {
-  background: url(./assets/linkedin-grey.svg) no-repeat;
+  background: url(./assets/linkedin.svg) no-repeat;
   background-position: 50%;
   cursor: url(./assets/yellow-cursor.svg), default;
 }
