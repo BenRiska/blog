@@ -6,21 +6,22 @@ import highwayPhoto from "../assets/highway.jpg";
 import { useHistory } from "react-router-dom";
 import sunIcon from "../assets/sun.svg"
 import moonIcon from "../assets/moon-stars.svg"
+import { FacebookButton, LinkedInButton } from "react-social";
 
-function Blog1({showBlogAnimation, removeBlogAnimation}) {
+function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation}) {
 
-    const [darkMode, setDarkMode] = useState(false)
+    
     const [fontSize, setFontSize] = useState("medium")
 
     let history = useHistory();
 
     useEffect(() => {
-        console.log("hi")
         showBlogAnimation(1)
+        
     }, [])
 
     const handleFontChange = (size) => {
-        if(size == "small"){
+        if(size === "small"){
             setFontSize(size)
             document.documentElement.style
             .setProperty('--blog-text', '16px');
@@ -48,6 +49,7 @@ function Blog1({showBlogAnimation, removeBlogAnimation}) {
     }
 
    const  handleDarkMode = () => {
+       const slider = document.querySelector(".slider")
     if(!darkMode){
         document.documentElement.style
             .setProperty('--bg', '#162039');
@@ -57,7 +59,8 @@ function Blog1({showBlogAnimation, removeBlogAnimation}) {
             .setProperty('--text', 'white');
         document.documentElement.style
             .setProperty('--card-bg', 'rgb(30, 30, 30)');
-            setDarkMode(true)
+            toggleDarkMode()
+            slider.style.animation = "0.2s ease-in-out 0s 1 normal forwards running slider-animation"
     } else{
         document.documentElement.style
             .setProperty('--bg', 'white');
@@ -67,14 +70,25 @@ function Blog1({showBlogAnimation, removeBlogAnimation}) {
             .setProperty('--text', 'black');
         document.documentElement.style
             .setProperty('--card-bg', 'white');
-            setDarkMode(false)
+            toggleDarkMode()
+            slider.style.animation = "0.2s ease-in-out 0s 1 normal forwards running slider-animation-reverse"
     }
    }
+
+   const pasteToClipboard = () => {
+    const copyLink = document.querySelector(".blog-link");
+    navigator.clipboard.writeText("hi");
+    if (!copyLink.classList.contains("clicked")){
+      copyLink.classList.add("clicked");
+      setTimeout(() => {copyLink.classList.remove("clicked")}, 1000)
+    }
+  }
+
     return (
         <div className="blog-1 blog">
+            
             <div className="options">
                 <p onClick={e => {
-                    const elementTop = document.querySelector(".blog-1 .header");
                     darkMode && handleDarkMode()
                     handleFontChange("medium")
                     removeBlogAnimation(1, () => setTimeout(() => history.push("/"), 1000))
@@ -96,6 +110,8 @@ function Blog1({showBlogAnimation, removeBlogAnimation}) {
                 </div>
             </div>
             <div className="blog-content">
+            <div className="blog-container">
+            <div className="blog-container-2">
             <div className="header">
                 <div className="header-info">
                     <div className="header-topic">Designing</div>
@@ -103,7 +119,9 @@ function Blog1({showBlogAnimation, removeBlogAnimation}) {
                 </div>
                 <h1>How to be the best at everything</h1>
             </div>
+
             <div className="blog-body">
+
                 <h2 className="blog-subtitle">1. Some kind of subtitle</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis magni eveniet rerum itaque minima, facere vero deserunt aliquam, repellendus aspernatur dolorem earum qui odio est suscipit ducimus aut officia eum?</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi beatae est, doloremque blanditiis ipsum, cum iste alias, nostrum laboriosam officia suscipit deleniti consequuntur eveniet vero.</p>
@@ -130,17 +148,22 @@ function Blog1({showBlogAnimation, removeBlogAnimation}) {
                 <div className="footer-media">
                     <p>Enjoyed the read? share it for friends to see</p>
                     <div className="media-links">
-                    <a rel="noreferrer" target="_blank" href="https://www.instagram.com/featurefield/?hl=en" className="insta">
-                    </a>
-                    <div  className="copy-link">
+                    <FacebookButton className="social-button" url={"https://portfolio-11585.web.app/"} appId={"209127063984746"}>
+                    <div  className="insta"></div>
+                    </FacebookButton>
+                    <div onClick={pasteToClipboard}  className="copy-link blog-link">
                     </div>
-                    <a rel="noreferrer" target="_blank" href="https://www.linkedin.com/feed/" className="linkedin">
-                    </a>
+                    <LinkedInButton className="social-button" url={"https://portfolio-11585.web.app/"} appId={"77kemmicouurck"}>
+                    <div  className="linkedin">
+                    </div>
+                    </LinkedInButton>
                     </div>
                 </div>
                 <div className="footer-read-more">
-                    Read more
+                    Thanks for reading.
                 </div>
+            </div>
+            </div>
             </div>
             </div>
         </div>

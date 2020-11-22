@@ -16,19 +16,11 @@ body {
   background-color: var(--bg);
 }
 
-.book {
-  height: 500px;
-  position: absolute;
-  top: 25vh;
-  right: 7vw;
-  z-index: -1;
-}
-
 .cursor {
   position: fixed;
   top: 0px;
   left: 0px;
-  z-index: 10;
+  z-index: 1000;
   pointer-events: none;
 }
 
@@ -40,19 +32,20 @@ body {
 
 .white-icon {
   position: absolute;
-  top: 2.5rem;
-  left: 60px;
+  top: 3rem;
+  left: 4rem;
   height: 50px;
 }
 
 .sound-icon {
   position: absolute;
-  top: 3.3rem;
-  left: 100px;
+  top: 3.8rem;
+  left: 6.5rem;
   opacity: 1;
   height: 40px;
   transition: all 0.5s ease;
   padding: 10px;
+  z-index: 5;
 }
 
 .sound-icon.on {
@@ -80,6 +73,7 @@ body {
   font-size: 1rem;
   font-weight: 500;
   padding: 1rem;
+  z-index: 5;
 }
 
 .say-hi {
@@ -162,7 +156,7 @@ body {
   position: absolute;
   top: 38vh;
   left: 2vw;
-  z-index: -1;
+  z-index: 5;
 }
 
 .linkedin,
@@ -178,6 +172,18 @@ body {
   transition: all 0.3s ease;
 }
 
+.App.dark .insta {
+  background: url(./assets/dark-insta.svg) no-repeat;
+  background-position: 50%;
+  cursor: url(./assets/yellow-cursor.svg), default;
+}
+
+.App.dark .insta:hover {
+  background: url(./assets/insta-yellow.svg) no-repeat;
+  background-position: 50%;
+  cursor: url(./assets/yellow-cursor.svg), default;
+}
+
 .insta {
   background: url(./assets/insta.svg) no-repeat;
   background-position: 50%;
@@ -186,6 +192,17 @@ body {
 
 .insta:hover {
   background: url(./assets/insta-yellow.svg) no-repeat;
+  background-position: 50%;
+  opacity: 1;
+}
+
+.App.dark .copy-link {
+  background: url(./assets/dark-link-icon.svg) no-repeat;
+  background-position: 50%;
+}
+
+.App.dark .copy-link:hover {
+  background: url(./assets/copy-link-yellow.svg) no-repeat;
   background-position: 50%;
   opacity: 1;
 }
@@ -200,7 +217,7 @@ body {
   position: absolute;
   top: 40%;
   right: -300%;
-  color: rgba(0, 0, 0, 0.3);
+  color: var(--normal-text-color);
   font-size: 10px;
   animation: link-animation 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
     forwards running;
@@ -210,6 +227,18 @@ body {
   background: url(./assets/copy-link-yellow.svg) no-repeat;
   background-position: 50%;
   opacity: 1;
+}
+
+.App.dark .linkedin {
+  background: url(./assets/linkedin-dark.svg) no-repeat;
+  background-position: 50%;
+  cursor: url(./assets/yellow-cursor.svg), default;
+}
+
+.App.dark .linkedin:hover {
+  background: url(./assets/linkedin-yellow.svg) no-repeat;
+  background-position: 50%;
+  cursor: url(./assets/yellow-cursor.svg), default;
 }
 
 .linkedin {

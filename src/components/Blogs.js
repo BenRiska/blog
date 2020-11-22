@@ -181,12 +181,9 @@ function Blogs({handleBlogSelection, landed}) {
 
     return (
         <>
-        <video className="book" autoPlay muted  playsInline loop preload="none" >
-                <source src={bookVid}  type="video/mp4"/>
-             </video>
         <div className="blogs">
             
-            <div className="blog-toggle landing-z">
+            <div className="blog-toggle">
                 <div className="blog-topics">
                     <span>You are reading</span>
                     {" "}
@@ -211,7 +208,7 @@ function Blogs({handleBlogSelection, landed}) {
                     <img onClick={e => handleLayout("list")} className={!gridIcon ? "active" : null} src={vertLayoutIcon} alt="blog list toggle button"/>
                 </div>
             </div>
-            <div className="layout-container landing-z">
+            <div className="layout-container">
             {grid ? (<Grid handleBlogSelection={handleBlogSelection} blogs={blogs}/>) : (<List handleBlogSelection={handleBlogSelection} blogs={blogs}/>)}
             </div>
         </div>

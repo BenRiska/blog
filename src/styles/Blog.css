@@ -6,10 +6,13 @@
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
   opacity: 0;
+  width: 100%;
   transform: translatey(200%);
   color: var(--normal-text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .options {
@@ -17,6 +20,7 @@
   display: flex;
   justify-content: space-between;
   position: sticky;
+  width: 600px;
 }
 
 .back {
@@ -131,20 +135,26 @@
   overflow: scroll;
 }
 
+.blog-container {
+  width: 100vw;
+}
+
+.blog-container-2 {
+  width: 600px;
+  margin: 0 auto;
+}
+
 .blog-content::-webkit-scrollbar {
   display: none;
 }
 
 .header {
-  margin: 1.5rem 0;
+  padding: 1.5rem 0;
 }
 
 .header-info {
   display: flex;
   justify-content: space-between;
-}
-
-.header-topic {
 }
 
 .header-time {
@@ -154,7 +164,7 @@
 }
 
 .header > h1 {
-  margin-top: 1rem;
+  padding-top: 1rem;
   font-size: var(--blog-title-text);
   font-weight: 500;
   padding-bottom: 3rem;
@@ -164,12 +174,12 @@
 .blog-subtitle {
   font-size: var(--blog-subtitle-text);
   font-weight: 500;
-  margin: 2rem 0;
+  padding: 2rem 0;
 }
 
 .blog-body > p {
   font-size: var(--blog-text);
-  margin: 1.5rem 0;
+  padding: 1.5rem 0;
   opacity: 0.8;
 }
 
@@ -191,14 +201,14 @@
 .blog-body > img {
   object-fit: contain;
   width: 600px;
-  margin: 1rem 0;
+  padding: 1rem 0;
 }
 
 .footer-media {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5rem 0;
+  padding: 5rem 0;
 }
 
 .footer-media > p {
@@ -210,10 +220,10 @@
   display: flex;
 }
 
-.media-links > a,
-.media-links > div {
-  margin-left: 1.5rem;
-  margin-bottom: 0;
+.media-links div {
+  margin: 0;
+  margin-left: 1rem;
+  padding: 0;
 }
 
 .footer-read-more {
@@ -224,4 +234,30 @@
   border-bottom: 3px solid var(--normal-text-color);
   margin-bottom: 3rem;
   font-size: 12px;
+}
+
+.social-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  padding: 0;
+}
+
+@keyframes slider-animation {
+  0% {
+    transform: translatex(0%);
+  }
+  100% {
+    transform: translatex(70%);
+  }
+}
+
+@keyframes slider-animation-reverse {
+  0% {
+    transform: translatex(70%);
+  }
+  100% {
+    transform: translatex(0%);
+  }
 }
