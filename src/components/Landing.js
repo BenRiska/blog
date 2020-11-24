@@ -15,7 +15,7 @@ function Landing({landAnimation, playMusic}) {
                         landAnimation()
                         playMusic()}} className="on">ON.</span>
                 </div>
-                <p>Music brings emotion so turn it on for your best experience.</p>
+                <p className="landing-text">Music brings emotion so turn it on for your best experience.</p>
             </div>
         </div>
     )

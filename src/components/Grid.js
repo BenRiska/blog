@@ -1,7 +1,6 @@
 import React from 'react'
 import "../styles/Grid.css"
 
-
 function Grid({blogs, handleBlogSelection}) {
 
     return ( 
@@ -25,6 +24,7 @@ function Grid({blogs, handleBlogSelection}) {
                         </div>
                 }
             })}
+            
         </div>
     )
 }

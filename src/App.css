@@ -7,6 +7,18 @@
   --blog-text: 22px;
   --blog-title-text: 36px;
   --blog-subtitle-text: 26px;
+  --blog-padding: 1.4rem 0;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+.contact-exit {
+  position: absolute;
+  top: 5vh;
+  right: 3rem;
+}
+
+.contact-exit > img {
+  height: 25px;
 }
 
 body {
@@ -32,15 +44,15 @@ body {
 
 .white-icon {
   position: absolute;
-  top: 3rem;
-  left: 4rem;
+  top: 2.5rem;
+  left: 3rem;
   height: 50px;
 }
 
 .sound-icon {
   position: absolute;
-  top: 3.8rem;
-  left: 6.5rem;
+  top: 3.4rem;
+  left: 5.2rem;
   opacity: 1;
   height: 40px;
   transition: all 0.5s ease;
@@ -78,7 +90,7 @@ body {
 
 .say-hi {
   top: 5vh;
-  right: 5vh;
+  right: 3rem;
   cursor: url(./assets/hand.svg), default !important;
   color: var(--normal-text-color);
 }
@@ -95,7 +107,7 @@ body {
 
 .portfolio {
   bottom: 5vh;
-  left: 5vh;
+  left: 3rem;
   cursor: url(./assets/left-arrow.svg), default !important;
 }
 
@@ -116,7 +128,7 @@ body {
 
 .github {
   bottom: 5vh;
-  right: 5vh;
+  right: 3rem;
   cursor: url(./assets/right-arrow.svg), default !important;
 }
 
@@ -155,7 +167,7 @@ body {
 .socials {
   position: absolute;
   top: 38vh;
-  left: 2vw;
+  left: 3rem;
   z-index: 5;
 }
 
@@ -267,5 +279,73 @@ body {
   100% {
     transform: translatey(0);
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .socials {
+    display: none;
+  }
+
+  .say-hi,
+  .github {
+    right: 3vw;
+  }
+
+  .portfolio {
+    left: 3vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .say-hi,
+  .github {
+    right: 1vw;
+  }
+
+  .portfolio,
+  .github {
+    bottom: 1rem;
+  }
+
+  .say-hi {
+    top: 1rem;
+  }
+
+  .white-icon {
+    left: 1.5rem;
+    top: 1rem;
+  }
+
+  .portfolio {
+    left: 1vw;
+  }
+
+  .sound-icon {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .say-hi,
+  .github {
+    display: none;
+  }
+
+  .portfolio {
+    display: none;
+  }
+
+  .cursor {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  :root {
+    --blog-text: 16px;
+    --blog-title-text: 30px;
+    --blog-subtitle-text: 24px;
+    --blog-padding: 1rem 0;
   }
 }

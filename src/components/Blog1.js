@@ -10,14 +10,12 @@ import { FacebookButton, LinkedInButton } from "react-social";
 
 function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation}) {
 
-    
     const [fontSize, setFontSize] = useState("medium")
-
     let history = useHistory();
 
+    // show blog animation on component mount
     useEffect(() => {
         showBlogAnimation(1)
-        
     }, [])
 
     const handleFontChange = (size) => {
@@ -29,6 +27,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             .setProperty('--blog-title-text', '30px');
             document.documentElement.style
             .setProperty('--blog-subtitle-text', '24px');
+            document.documentElement.style
+            .setProperty('--blog-padding', '1rem 0');
         } else if(size ==="medium"){
             setFontSize(size)
             document.documentElement.style
@@ -37,6 +37,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             .setProperty('--blog-title-text', '36px');
             document.documentElement.style
             .setProperty('--blog-subtitle-text', '28px');
+            document.documentElement.style
+            .setProperty('--blog-padding', '1.4rem 0');
         } else if (size === "large"){
             setFontSize(size)
             document.documentElement.style
@@ -45,6 +47,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             .setProperty('--blog-title-text', '40px');
             document.documentElement.style
             .setProperty('--blog-subtitle-text', '34px');
+            document.documentElement.style
+            .setProperty('--blog-padding', '1.8rem 0');
         }
     }
 
@@ -59,6 +63,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             .setProperty('--text', 'white');
         document.documentElement.style
             .setProperty('--card-bg', 'rgb(30, 30, 30)');
+            document.documentElement.style
+            .setProperty('--border-color', 'rgba(255,255,255, 0.1)');
             toggleDarkMode()
             slider.style.animation = "0.2s ease-in-out 0s 1 normal forwards running slider-animation"
     } else{
@@ -70,6 +76,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             .setProperty('--text', 'black');
         document.documentElement.style
             .setProperty('--card-bg', 'white');
+            document.documentElement.style
+            .setProperty('--border-color', 'rgba(0,0,0, 0.1)');
             toggleDarkMode()
             slider.style.animation = "0.2s ease-in-out 0s 1 normal forwards running slider-animation-reverse"
     }
@@ -86,7 +94,7 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
 
     return (
         <div className="blog-1 blog">
-            
+            {/* options for font size & dark mode*/}
             <div className="options">
                 <p onClick={e => {
                     darkMode && handleDarkMode()
@@ -109,6 +117,7 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
                     </div>
                 </div>
             </div>
+            {/* blog content with containers to allow fullscreen scrolling while restricting width on absolute element*/}
             <div className="blog-content">
             <div className="blog-container">
             <div className="blog-container-2">
@@ -119,9 +128,7 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
                 </div>
                 <h1>How to be the best at everything</h1>
             </div>
-
             <div className="blog-body">
-
                 <h2 className="blog-subtitle">1. Some kind of subtitle</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis magni eveniet rerum itaque minima, facere vero deserunt aliquam, repellendus aspernatur dolorem earum qui odio est suscipit ducimus aut officia eum?</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi beatae est, doloremque blanditiis ipsum, cum iste alias, nostrum laboriosam officia suscipit deleniti consequuntur eveniet vero.</p>

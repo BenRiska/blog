@@ -1,5 +1,10 @@
 .list {
   max-height: 91vh;
+  overflow: scroll;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
 }
 
 .list > div {
@@ -40,4 +45,20 @@
 
 .list > span > img {
   margin-right: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .list > div > h1 {
+    font-size: 1.1rem;
+  }
+
+  .list > span {
+    margin: 2.5rem 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .list > div > h1 {
+    font-size: 1.1rem;
+  }
 }

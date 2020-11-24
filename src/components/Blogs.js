@@ -3,101 +3,10 @@ import "../styles/Blogs.css"
 import gridLayoutIcon from "../assets/grid-layout.svg"
 import vertLayoutIcon from "../assets/vert-layout.svg"
 import expandIcon from "../assets/expand-arrow.svg"
-import {gsap} from "gsap"
 import Grid from './Grid'
 import List from './List'
 import blogTitles from "../blogTitles.js"
-import bookVid from "../assets/book.mov";
-
-
-
-let tl = gsap.timeline();
-
-const openDropdownAnimation = () => {tl.to(".underline", {
-    duration: .4,
-    width: "100px",
-    height: "2px",
-    ease: "expo.inOut"
-}).to(".topics", {
-    duration: .3,
-    height: "160px",
-    ease: "expo.inOut"
-})}
-
-const closeDropdownAnimation = () => {tl.to(".topics", {
-    duration: .3,
-    height: "0",
-    ease: "expo.inOut"
-}).to(".underline", {
-    duration: .2,
-    height: "1px",
-    width: "100%",
-    ease: "expo.inOut"
-})}
-
-
-const showGridItems = () => {tl.to(".grid-item", {
-    duration: 1,
-    opacity: 1,
-    y: 0,
-    ease: "power4.out",
-    stagger: {
-        amount: .7
-      }
-})}
-
-const removeGridItems = (setList) => {tl.to(".grid-item", {
-    duration: 1,
-    opacity: 0,
-    y: 100,
-    ease: "power4.out",
-    stagger: {
-        amount: .7
-      },
-      onComplete: setList
-})}
-
-const showListItems = () => {tl.to(".list-item", {
-    duration: 1,
-    opacity: 1,
-    y: 0,
-    ease: "power4.out",
-    stagger: {
-        amount: .7
-      }
-}).to(".list > span", {
-    duration: 0.5,
-    opacity: 1,
-    y: 0,
-    ease: "power4.out",
-})}
-
-const removeListItems = (setGrid) => {tl.to(".list > span", {
-    duration: .1,
-    opacity: 0,
-    y: 30,
-    ease: "power4.out",
-}).to(".list-item", {
-    duration: 1,
-    opacity: 0,
-    y: 100,
-    ease: "power4.out",
-    stagger: {
-        amount: .7
-      },
-      onComplete: setGrid
-})}
-
-const easeBookAnimation = () => {
-    tl.from(".book, .blog-toggle", {
-        duration: 2,
-        opacity: 0,
-        ease: "power4.out",
-    })
-}
-
-
-
+import {openDropdownAnimation, closeDropdownAnimation, showGridItems, removeGridItems, showListItems, removeListItems, easeBookAnimation} from "../animations"
 
 
 function Blogs({handleBlogSelection, landed}) {
@@ -109,6 +18,35 @@ function Blogs({handleBlogSelection, landed}) {
     const [blogs, setBlogs] = useState(blogTitles)
     const [easeBook, setEaseBook] = useState(true)
 
+    // shows content when landing animation is done
+    useEffect(() => {
+        if(landed){
+        const blogToggle = document.querySelector(".blog-toggle") 
+        const layout = document.querySelector(".layout-container")
+            blogToggle.style.opacity = 1;
+            blogToggle.style.zIndex = 1;
+            layout.style.opacity = 1;
+            layout.style.zIndex = 1;
+        }
+    }, [])
+
+    // listens for when the list grid changes and triggers animation
+    useEffect(() => {
+        if(grid){
+            if(easeBook){
+                easeBookAnimation()
+                setEaseBook(false)
+            }
+            showGridItems()
+        } else{
+            if(easeBook){
+                easeBookAnimation()
+                setEaseBook(false)
+            }
+            showListItems()
+        }
+    }, [grid, blogs])
+
     const handleDropdown = () => {
         if(dropdown){
             closeDropdownAnimation()
@@ -119,18 +57,7 @@ function Blogs({handleBlogSelection, landed}) {
         }
     }
 
-    useEffect(() => {
-        if(landed){
-        const blogToggle = document.querySelector(".blog-toggle") 
-        const layout = document.querySelector(".layout-container")
-            blogToggle.style.opacity = 1;
-            blogToggle.style.zIndex = 1;
-            layout.style.opacity = 1;
-            layout.style.zIndex = 1;
-
-        }
-    }, [])
-
+    // handles blog selection
     const handleSelect = choice => {
         handleDropdown()
         setTopic(choice);
@@ -151,6 +78,7 @@ function Blogs({handleBlogSelection, landed}) {
     grid === true ? removeGridItems(() => setBlogs(filteredBlogs)) : removeListItems(() => setBlogs(filteredBlogs));
     }
 
+    // handles layout change
     const handleLayout = (newLayout) => {
         if(newLayout === "grid"){
             setGridIcon(true)
@@ -161,31 +89,13 @@ function Blogs({handleBlogSelection, landed}) {
         }
     }
 
-    useEffect(() => {
-        if(grid){
-            if(easeBook){
-                easeBookAnimation()
-                setEaseBook(false)
-            }
-            showGridItems()
-        } else{
-            if(easeBook){
-                easeBookAnimation()
-                setEaseBook(false)
-            }
-            showListItems()
-        }
-    }, [grid, blogs])
-
-
-
     return (
         <>
         <div className="blogs">
-            
+            {/* toggle catagory and grid display*/}
             <div className="blog-toggle">
                 <div className="blog-topics">
-                    <span>You are reading</span>
+                    <span className="small-screen">You are reading</span>
                     {" "}
                     <div onClick={handleDropdown} className="filter-wrap">
                         <div className="filter-aligner">
@@ -208,6 +118,7 @@ function Blogs({handleBlogSelection, landed}) {
                     <img onClick={e => handleLayout("list")} className={!gridIcon ? "active" : null} src={vertLayoutIcon} alt="blog list toggle button"/>
                 </div>
             </div>
+            {/* blog list */}
             <div className="layout-container">
             {grid ? (<Grid handleBlogSelection={handleBlogSelection} blogs={blogs}/>) : (<List handleBlogSelection={handleBlogSelection} blogs={blogs}/>)}
             </div>
