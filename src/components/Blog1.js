@@ -85,7 +85,7 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
 
    const pasteToClipboard = () => {
     const copyLink = document.querySelector(".blog-link");
-    navigator.clipboard.writeText("hi");
+    navigator.clipboard.writeText("https://blog-6a15f.web.app/how-to-be-the-best-at-everything");
     if (!copyLink.classList.contains("clicked")){
       copyLink.classList.add("clicked");
       setTimeout(() => {copyLink.classList.remove("clicked")}, 1000)
@@ -98,7 +98,6 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             <div className="options">
                 <p onClick={e => {
                     darkMode && handleDarkMode()
-                    handleFontChange("medium")
                     removeBlogAnimation(1, () => setTimeout(() => history.push("/"), 1000))
                     }} className="back">
                     <img src={darkMode ? leftArrowIconDark : leftArrowIcon} alt="back icon"/> Back
@@ -156,7 +155,7 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
                     <p>Enjoyed the read? share it for friends to see</p>
                     <div className="media-links">
                     <FacebookButton className="social-button" url={"https://portfolio-11585.web.app/"} appId={"209127063984746"}>
-                    <div  className="insta"></div>
+                    <div  className="twitter"></div>
                     </FacebookButton>
                     <div onClick={pasteToClipboard}  className="copy-link blog-link">
                     </div>

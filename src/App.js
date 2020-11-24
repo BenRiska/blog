@@ -11,8 +11,8 @@ import pianoMusic from "./assets/Magical-Piano-Version.mp3"
 import Blogs from "./components/Blogs";
 import Blog1 from "./components/Blog1";
 import { Switch, Route, useHistory } from "react-router-dom";
-import Contact from "./components/Contact"
-import {homeAnimation, prepBlogAnimation, showBlogAnimation, removeBlogAnimation, removeContactBlogText, removeContactText, removeContactSection} from "./animations"
+import {homeAnimation, prepBlogAnimation, showBlogAnimation, removeBlogAnimation} from "./animations"
+
 
 
 
@@ -31,8 +31,9 @@ function App() {
   useEffect(() => {
     new Cursor(document.querySelector(".cursor"));
     setTimeout(() => {
-      autoLandAnimation()
-    }, 3000)
+      if(!landed){
+      autoLandAnimation()}
+    },3000)
   }, [])
 
   // checks if music should be playing 
@@ -74,50 +75,27 @@ function App() {
 
   // gets rid of landing screen
   const autoLandAnimation = () => {
+    setLanded(true)
     const body = document.querySelector("body");
-    const indexElements = document.querySelectorAll(".landing-z") 
-    if(!landed){
-      homeAnimation()
-      indexElements.forEach(el => {
-        el.style.zIndex = 1;
-        el.style.opacity = 1;
+    const mainContent = document.querySelector(".landing-z") 
+    homeAnimation(() => {
+        mainContent.style.zIndex = 1;
+        mainContent.style.opacity = 1;
       })
       body.style.cursor = `url(${yellowCursor}), default`;
       document.documentElement.style
                 .setProperty('--cursor-ring', '#f2da87');
-      setLanded(true)
-    }
   }
 
   const pasteToClipboard = () => {
     const copyLink = document.querySelector(".copy-link");
-    navigator.clipboard.writeText("hi");
+    navigator.clipboard.writeText("https://blog-6a15f.web.app/");
     if (!copyLink.classList.contains("clicked")){
       copyLink.classList.add("clicked");
       setTimeout(() => {copyLink.classList.remove("clicked")}, 1000)
     }
   }
-  
-  // checks if user is on blog or home for correct animation before pushing url to contact page 
-  const contactTransition = () => {
-    if(blogView){
-      setBlog(false)
-      setBlogView(false)
-      removeContactBlogText(blog, () => {
-        history.push("/contact")
-      setContactView(true)
-      })
-    } else{
-    removeContactText(() => {
-      history.push("/contact")
-      setContactView(true)
-  })}
-  }
 
-  const removeContactTransition = () => {
-    setContactView(false)
-    removeContactSection(() => history.push("/"))
-  }
 
   return (
     <>
@@ -128,10 +106,10 @@ function App() {
       {/* main page */}
       <div className="landing-z">
         {/* absolute positioned icons */}
-        <img src={darkMode ? darkSoundIcon : soundIcon} onClick={() => setMusic(!music)} alt="main page icon" className="sound-icon"/>
-
-        <img src={darkMode ? darkIcon : whiteIcon} alt="main page icon" className="white-icon"/>
-
+        <div className="logo">
+          <img src={darkMode ? darkIcon : whiteIcon} alt="main page icon" className="white-icon"/>
+          <img src={darkMode ? darkSoundIcon : soundIcon} onClick={() => setMusic(!music)} alt="main page icon" className="sound-icon"/>
+        </div>
         <audio loop className="piano" src={pianoMusic}></audio>
 
         <div className="socials">
@@ -143,7 +121,7 @@ function App() {
             </a>
         </div>
 
-        { !contactView && <span onClick={() => contactTransition()} className="say-hi static-link">say hi.</span>}
+      <span className="say-hi static-link"><a rel="noreferrer" target="_blank" href="https://portfolio-11585.web.app/">say hi.</a> </span>
 
         <span className="portfolio static-link">
             <a rel="noreferrer" target="_blank" href="https://portfolio-11585.web.app/">portfolio.</a>
@@ -156,10 +134,6 @@ function App() {
         {/* main content - handled by router*/}
 
         <Switch>
-            <Route path="/contact">
-                <Contact removeContactTransition={removeContactTransition}/>
-            </Route>
-
             <Route path="/how-to-be-the-best-at-everything">
                 <Blog1 darkMode={darkMode} toggleDarkMode={toggleDarkMode} showBlogAnimation={showBlogAnimation} removeBlogAnimation={removeBlogAnimation}/>
             </Route>

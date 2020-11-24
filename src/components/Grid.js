@@ -8,7 +8,7 @@ function Grid({blogs, handleBlogSelection}) {
             {blogs.map((title) =>  {
                 if(title.placeholder){
                     return <div data-index={title.id} className="grid-item">
-                                <h1 style={{textDecoration: "line-through"}}>Work in progress.</h1>
+                                <h1 style={{textDecoration: "line-through", color: "grey"}}>Work in progress.</h1>
                                 <span className="loader-bar"><span></span></span>
                                 <p className="categories">coming soon</p>
                             </div>

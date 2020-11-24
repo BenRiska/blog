@@ -7,13 +7,13 @@ function List({blogs, handleBlogSelection}) {
         <div  className="list">
             {blogs.map((title) =>  {
                 if(title.placeholder){
-                    return <div  data-index={title.id} className="list-item">
-                    <h1 style={{textDecoration: "line-through"}}>Work in progress.</h1>
+                    return <div key={title.id} data-index={title.id} className="list-item">
+                    <h1 style={{textDecoration: "line-through", color: "grey"}}>Work in progress.</h1>
                     <span className="length">Coming soon.</span>
                     </div>
                 }
                 else{
-                    return <div onClick={() => handleBlogSelection(title.id, "how-to-be-the-best-at-everything")} data-index={title.id} className="list-item">
+                    return <div key={title.id} onClick={() => handleBlogSelection(title.id, "how-to-be-the-best-at-everything")} data-index={title.id} className="list-item">
                     <h1>{title.title}</h1>
                     <span className="length">{title.duration} min read</span>
                     </div>

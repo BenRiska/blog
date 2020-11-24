@@ -72,3 +72,9 @@
     top: 1rem;
   }
 }
+
+@media only screen and (max-width: 680px) {
+  .landing-icon {
+    height: 40px;
+  }
+}

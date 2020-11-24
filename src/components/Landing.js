@@ -11,7 +11,7 @@ function Landing({landAnimation, playMusic}) {
                 <img src={plantGif} alt="landing page animation"/>
                 <div className="music-selector">
                     <span onClick={landAnimation} className="off">OFF.</span>
-                    <span onClick={() => {
+                    <span onClick={() => { 
                         landAnimation()
                         playMusic()}} className="on">ON.</span>
                 </div>

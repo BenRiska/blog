@@ -13,8 +13,18 @@
 
 .contact-exit {
   position: absolute;
-  top: 5vh;
-  right: 3rem;
+  top: 4vh;
+  right: 2rem;
+}
+
+.share {
+  display: none;
+  top: 2vh;
+  right: 3vw;
+}
+
+.share > img {
+  height: 20px;
 }
 
 .contact-exit > img {
@@ -39,20 +49,21 @@ body {
 .landing-z {
   z-index: -1;
   opacity: 0;
-  transition: opacity 2s ease;
+  transition: opacity 1s ease;
+}
+
+.logo {
+  position: absolute;
+  top: 3vh;
+  left: 2vw;
+  z-index: 5;
 }
 
 .white-icon {
-  position: absolute;
-  top: 2.5rem;
-  left: 3rem;
   height: 50px;
 }
 
 .sound-icon {
-  position: absolute;
-  top: 3.4rem;
-  left: 5.2rem;
   opacity: 1;
   height: 40px;
   transition: all 0.5s ease;
@@ -89,9 +100,15 @@ body {
 }
 
 .say-hi {
-  top: 5vh;
-  right: 3rem;
+  top: 3vh;
+  right: 1vw;
   cursor: url(./assets/hand.svg), default !important;
+  color: var(--normal-text-color);
+}
+
+.say-hi > a {
+  cursor: url(./assets/hand.svg), default !important;
+  text-decoration: none;
   color: var(--normal-text-color);
 }
 
@@ -106,8 +123,8 @@ body {
 }
 
 .portfolio {
-  bottom: 5vh;
-  left: 3rem;
+  bottom: 3vh;
+  left: 1vw;
   cursor: url(./assets/left-arrow.svg), default !important;
 }
 
@@ -127,8 +144,8 @@ body {
 }
 
 .github {
-  bottom: 5vh;
-  right: 3rem;
+  bottom: 3vh;
+  right: 1vw;
   cursor: url(./assets/right-arrow.svg), default !important;
 }
 
@@ -339,6 +356,14 @@ body {
   .cursor {
     display: none;
   }
+
+  .share {
+    display: initial;
+  }
+
+  .logo {
+    top: 2vh;
+  }
 }
 
 @media only screen and (max-width: 680px) {
@@ -347,5 +372,9 @@ body {
     --blog-title-text: 30px;
     --blog-subtitle-text: 24px;
     --blog-padding: 1rem 0;
+  }
+
+  .white-icon {
+    height: 40px;
   }
 }

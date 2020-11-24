@@ -6,9 +6,8 @@
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0;
+  opacity: 1;
   width: 100%;
-  transform: translatey(200%);
   color: var(--normal-text-color);
   display: flex;
   flex-direction: column;
@@ -23,6 +22,11 @@
   width: 600px;
 }
 
+.options > p {
+  opacity: 0;
+  transform: translatey(30px);
+}
+
 .back {
   opacity: 0.4;
   display: flex;
@@ -32,7 +36,7 @@
 }
 
 .back:hover {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .back > img {
@@ -42,6 +46,8 @@
 .option-controls {
   display: flex;
   align-items: center;
+  opacity: 0;
+  transform: translatey(30px);
 }
 
 .font-size > span {
@@ -150,6 +156,8 @@
 
 .header {
   padding: 1.5rem 0;
+  opacity: 0;
+  transform: translatey(30px);
 }
 
 .header-info {
@@ -177,6 +185,11 @@
   padding: 2rem 0;
 }
 
+.blog-body {
+  opacity: 0;
+  transform: translatey(30px);
+}
+
 .blog-body > p {
   font-size: var(--blog-text);
   padding: var(--blog-padding);
@@ -202,6 +215,11 @@
   object-fit: contain;
   width: 600px;
   padding: 1rem 0;
+}
+
+.blog-footer {
+  opacity: 0;
+  transform: translatey(30px);
 }
 
 .footer-media {
@@ -240,8 +258,59 @@
   background-color: transparent;
   border: none;
   outline: none;
-
   padding: 0;
+}
+
+.facebook {
+  background: url(../assets/facebook.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  cursor: url(../assets/yellow-cursor.svg), default;
+}
+
+.twitter {
+  background: url(../assets/facebook-dark.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  cursor: url(../assets/yellow-cursor.svg), default;
+}
+
+.twitter:hover,
+.facebook:hover {
+  cursor: url(../assets/yellow-cursor.svg), default;
+}
+
+.App.dark .twitter {
+  background: url(../assets/facebook-light.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  cursor: url(../assets/yellow-cursor.svg), default;
+  height: 35px;
+  width: 35px;
+  border: 2px solid var(--normal-text-color);
+  opacity: 0.2;
+  display: grid;
+  place-items: center;
+  transition: all 0.3s ease;
+}
+
+.twitter {
+  height: 35px;
+  width: 35px;
+  border: 2px solid var(--normal-text-color);
+  opacity: 0.2;
+  display: grid;
+  place-items: center;
+  transition: all 0.3s ease;
+}
+
+.twitter:hover,
+.App.dark .twitter:hover {
+  border: 2px solid var(--yellow);
+  opacity: 1;
+  background: url(../assets/facebook-yellow.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
 
 @keyframes slider-animation {

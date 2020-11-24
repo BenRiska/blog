@@ -2,48 +2,67 @@ import gsap from "gsap"
 
 let tl = gsap.timeline();
 
-export const homeAnimation = () => {
+export const homeAnimation = (f) => {
     tl.to(".landing", {
       opacity: 0,
-      duration: 0.9,
-      ease: "expo.inOut",
+      duration: 1,
+      ease: "power4.out",
       zIndex: -1,
-      
+      onComplete: f
+    })
+  }
+
+  export const easeBlogs = () => {
+    tl.to(".blogs", {
+      opacity: 1,
+      duration: .5,
+      y: 0,
+      ease: "power4.out",
     })
   }
   
   export const prepBlogAnimation = (showBlog) => {
-    tl.to(".blogs", {
-      y: -200,
-      duration: 1.2,
+    tl.to(".blog-topics, .blog-layout, .layout-container", {
+      y: -10,
+      duration: 1,
       opacity: 0,
       ease: "power4.out",
       transformOrigin: "top center",
+      stagger: {
+        amount: 0.3
+      },
       onComplete: showBlog
     })
   }
   
   
   export const showBlogAnimation = (blog) => {
-    tl.to(`.blog-${blog}`, {
-      duration: 1,
+    tl.to(`.options > p, .option-controls, .header, .blog-body, .blog-footer`, {
+      duration: 0.7,
       opacity: 1,
       y: 0,
-      ease: "power4.out"
+      ease: "power4.out",
+      stagger: {
+        amount: 1
+      },
     })
   }
   
   export const removeBlogAnimation = (blog, f) => {
-    tl.to(`.blog-${blog}`, {
-      duration: 1,
+    tl.to(`.back, .option-controls, .header, .blog-body, .blog-footer`, {
+      duration: 0.5,
       opacity: 0,
-      y: 200,
+      y: -10,
+      ease: "power4.out",
+      stagger: {
+        amount: .5
+      },
       onComplete: f
     })
   }
   
   export const removeContactText = (f) => {
-    tl.to(`.blogs, .say-hi`, {
+    tl.to(`.blogs, .say-hi, .share`, {
       duration: 1,
       opacity: 0,
       onComplete: f
@@ -51,7 +70,7 @@ export const homeAnimation = () => {
   }
   
   export const removeContactSection = (f) => {
-    tl.to(`.contact, .contact-exit`, {
+    tl.to(`.contact, .contact-exit, .share`, {
       duration: 1,
       opacity: 0,
       onComplete: f
@@ -60,7 +79,7 @@ export const homeAnimation = () => {
   
   
   export const removeContactBlogText = (blog, f) => {
-    tl.to(`.blog-${blog}, .say-hi`, {
+    tl.to(`.blog-${blog}, .say-hi, .share`, {
       duration: 1,
       opacity: 0,
       onComplete: f
@@ -68,7 +87,7 @@ export const homeAnimation = () => {
   }
 
 export const showContents = () => {
-    tl.to(".contact, .contact-exit", {
+    tl.to(".contact, .contact-exit > img", {
         duration: 3,
         opacity: 1,
     })
@@ -104,56 +123,38 @@ export const showGridItems = () => {tl.to(".grid-item", {
     y: 0,
     ease: "power4.out",
     stagger: {
-        amount: .7
+        amount: 1
       }
 })}
 
 export const removeGridItems = (setList) => {tl.to(".grid-item", {
     duration: 1,
     opacity: 0,
-    y: 100,
+    y: -30,
     ease: "power4.out",
     stagger: {
-        amount: .7
+        amount: 1
       },
       onComplete: setList
 })}
 
-export const showListItems = () => {tl.to(".list-item", {
+export const showListItems = () => {tl.to(".list-item, .list > span", {
     duration: 1,
     opacity: 1,
     y: 0,
     ease: "power4.out",
     stagger: {
-        amount: .7
+        amount: 1
       }
-}).to(".list > span", {
-    duration: 0.5,
-    opacity: 1,
-    y: 0,
-    ease: "power4.out",
 })}
 
-export const removeListItems = (setGrid) => {tl.to(".list > span", {
-    duration: .1,
-    opacity: 0,
-    y: 30,
-    ease: "power4.out",
-}).to(".list-item", {
+export const removeListItems = (setGrid) => {tl.to(".list > span, .list-item", {
     duration: 1,
     opacity: 0,
-    y: 100,
+    y: -30,
     ease: "power4.out",
     stagger: {
-        amount: .7
+        amount: 1
       },
       onComplete: setGrid
 })}
-
-export const easeBookAnimation = () => {
-    tl.from(".book, .blog-toggle", {
-        duration: 2,
-        opacity: 0,
-        ease: "power4.out",
-    })
-}

@@ -6,7 +6,7 @@ import expandIcon from "../assets/expand-arrow.svg"
 import Grid from './Grid'
 import List from './List'
 import blogTitles from "../blogTitles.js"
-import {openDropdownAnimation, closeDropdownAnimation, showGridItems, removeGridItems, showListItems, removeListItems, easeBookAnimation} from "../animations"
+import {openDropdownAnimation, closeDropdownAnimation, showGridItems, removeGridItems, showListItems, removeListItems, easeBlogs} from "../animations"
 
 
 function Blogs({handleBlogSelection, landed}) {
@@ -16,33 +16,16 @@ function Blogs({handleBlogSelection, landed}) {
     const [grid, setGrid] = useState(false)
     const [gridIcon, setGridIcon] = useState(false)
     const [blogs, setBlogs] = useState(blogTitles)
-    const [easeBook, setEaseBook] = useState(true)
 
-    // shows content when landing animation is done
     useEffect(() => {
-        if(landed){
-        const blogToggle = document.querySelector(".blog-toggle") 
-        const layout = document.querySelector(".layout-container")
-            blogToggle.style.opacity = 1;
-            blogToggle.style.zIndex = 1;
-            layout.style.opacity = 1;
-            layout.style.zIndex = 1;
-        }
-    }, [])
+        easeBlogs()
+    },[])
 
     // listens for when the list grid changes and triggers animation
     useEffect(() => {
         if(grid){
-            if(easeBook){
-                easeBookAnimation()
-                setEaseBook(false)
-            }
             showGridItems()
         } else{
-            if(easeBook){
-                easeBookAnimation()
-                setEaseBook(false)
-            }
             showListItems()
         }
     }, [grid, blogs])
@@ -59,6 +42,9 @@ function Blogs({handleBlogSelection, landed}) {
 
     // handles blog selection
     const handleSelect = choice => {
+        if(choice === topic){
+            return
+        }
         handleDropdown()
         setTopic(choice);
         let filteredBlogs = [];
