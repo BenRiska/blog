@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react'
 import "../styles/Blog.css"
 import leftArrowIcon from "../assets/left-arrow-grey2.svg"
 import leftArrowIconDark from "../assets/left-arrow-grey2-dark.svg"
-import highwayPhoto from "../assets/highway.jpg";
+import uxPhoto from "../assets/ux-picture.jpg";
+import processPhoto from "../assets/ux-process.jpg";
+import manPhoto from "../assets/ux-man.jpg";
 import { useHistory } from "react-router-dom";
 import sunIcon from "../assets/sun.svg"
 import moonIcon from "../assets/moon-stars.svg"
@@ -28,6 +30,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             document.documentElement.style
             .setProperty('--blog-subtitle-text', '24px');
             document.documentElement.style
+            .setProperty('--blog-subtitle-small-text', '20px');
+            document.documentElement.style
             .setProperty('--blog-padding', '1rem 0');
         } else if(size ==="medium"){
             setFontSize(size)
@@ -38,6 +42,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             document.documentElement.style
             .setProperty('--blog-subtitle-text', '28px');
             document.documentElement.style
+            .setProperty('--blog-subtitle-small-text', '26px');
+            document.documentElement.style
             .setProperty('--blog-padding', '1.4rem 0');
         } else if (size === "large"){
             setFontSize(size)
@@ -47,6 +53,8 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             .setProperty('--blog-title-text', '40px');
             document.documentElement.style
             .setProperty('--blog-subtitle-text', '34px');
+            document.documentElement.style
+            .setProperty('--blog-subtitle-small-text', '30px');
             document.documentElement.style
             .setProperty('--blog-padding', '1.8rem 0');
         }
@@ -123,43 +131,51 @@ function Blog1({darkMode, toggleDarkMode, showBlogAnimation, removeBlogAnimation
             <div className="header">
                 <div className="header-info">
                     <div className="header-topic">Designing</div>
-                    <div className="header-time">5 min read</div>
+                    <div className="header-time">4 min read</div>
                 </div>
-                <h1>How to be the best at everything</h1>
+                <h1>What is UX and why is it so important</h1>
             </div>
             <div className="blog-body">
-                <h2 className="blog-subtitle">1. Some kind of subtitle</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis magni eveniet rerum itaque minima, facere vero deserunt aliquam, repellendus aspernatur dolorem earum qui odio est suscipit ducimus aut officia eum?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi beatae est, doloremque blanditiis ipsum, cum iste alias, nostrum laboriosam officia suscipit deleniti consequuntur eveniet vero.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium a, eos nesciunt itaque tempora nostrum esse vel, explicabo, quasi sunt ullam at placeat adipisci inventore amet ipsam harum consequatur aliquam eligendi! Similique voluptate facilis sed!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sunt quisquam rem sapiente modi tempora animi esse aliquid velit dicta illo sint quia ullam numquam aliquam, aspernatur quos odio obcaecati, quidem reprehenderit autem accusamus. Dicta consequuntur veniam similique veritatis molestiae obcaecati iusto fugiat commodi officia laborum numquam sed, omnis corporis.</p>
-                <h2 className="blog-subtitle">2. Some other subtitle</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam sunt quis, laboriosam et adipisci magnam, saepe excepturi vel voluptas hic doloribus accusamus similique nisi cupiditate doloremque magni, repellat suscipit inventore soluta obcaecati! Veritatis dignissimos, quia quae, quasi veniam explicabo provident cum exercitationem ex saepe illum iste possimus fugit voluptatum non accusamus adipisci praesentium voluptas eligendi sed est autem? Temporibus tenetur esse labore a, eos ratione nisi ipsa sed, error dolores hic asperiores nihil sit cum delectus, ipsum quos mollitia optio.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque sint nostrum quae suscipit eligendi deserunt, quas illo facilis eos soluta reprehenderit repudiandae, nulla rem voluptatum dolor quis. Perferendis nemo, expedita veritatis nulla ab libero voluptatum corrupti inventore, facere quia facilis fuga quis? Deleniti tenetur voluptate quidem quam, dignissimos neque fugit dolorum rem voluptatibus! Ipsam alias exercitationem error pariatur aut quasi! Necessitatibus doloribus dignissimos quae veniam aliquid est facilis! Delectus repellendus beatae reprehenderit ad sint autem accusantium neque itaque quos. Iste!</p>
+                <img src={uxPhoto} alt="highway"/>
+                <h2 className="blog-subtitle">- What is UX?</h2>
+                <p>User experience or UX is defined as any interaction a user makes with a product or service - so while the term UX generally refers to software design - the core principles behind it can be applied to basically any commercial product or service. </p>
+                <p>A UX designer will take into consideration each and every element involved that helps in shaping the experience, how it makes the user feel and how easy it is to reach their desired outcome. These are topics of increasing concern among software developers as just having a pretty interface won’t retain customers if they struggle to navigate through the product.</p>
+                <p>Put simply, the aim of UX design is to build easy, efficient, relevant and a pleasing experience for the user. UX designers will integrate market research, strategy, product development, and design to build user experiences for products, services and processes - acting as a bridge to the customer to understand and meet their expectations.</p>
+                <img src={processPhoto} alt="highway"/>
+                <h2 className="blog-subtitle">- The UX process explained</h2>
+                <p>The designers aim to make daily products, services and technology as much user friendly and accessible as they can. They integrate design thinking to meet the user desires with technical feasibility and business viability. So what does the process look like? Here is an example:</p>
+                <h2 className="blog-subtitle-small">Inspiration</h2>
+                <p>It’s tough to figure out how the user will react to a product for the first time, so how do we get around that? use your competition! Do your research and analyse what works best for them - you want to understand the problem or challenge completely.</p>
+                <h2 className="blog-subtitle-small">Conceptualization</h2>
+                <p>The knowledge gained from the previous step is used to determine the user goals, emotions, pain points as well as behaviours. This helps in building user personas. Then the designers consider what these personas are trying to attain with the help of a specific product. By the end of this step you should have your user flows mapped out and ready to turn into a prototype.</p>
+                <h2 className="blog-subtitle-small">Iteration</h2>
+                <p>Now you have your user flows that will determine what steps the user will take to accomplish their tasks. Here brainstorming is involved for every step, by creating wireframes and prototypes for what the final product may look like. With the prototypes available, you can conduct usability tests to check how the user interacts with your product. Take your results and decide if further changes are required - repeating the process until happy. </p>
+                <h2 className="blog-subtitle-small">Exposition</h2>
+                <p>The designers come up with solutions as well as they also need to present their ideas and designs for proceeding with the stages ahead.</p>
+                <img src={manPhoto} alt="highway"/>
+                <h2 className="blog-subtitle">The best UX designers are: </h2>
                 <ul>
-                <li><span>- </span> a great point</li>
-                <li><span>- </span> another great point</li>
-                <li><span>- </span> wow this guy is smart</li>
+                <li><span>- </span> Adept at creating user personas, stories, wireframes, sitemaps, storyboards, and prototypes</li>
+                <li><span>- </span> Able to plan and implement user testing, surveys and formal evaluation</li>
+                <li><span>- </span> Able to iterate your tasks according to user testing data and qualitative feedback</li>
+                <li><span>- </span> Adept with the interaction design principles and information architecture</li>
+                <li><span>- </span> Able to transform goals, objectives and data into digital experiences</li>
             </ul>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate vero ut voluptatem unde minima quod, architecto, necessitatibus ad placeat quaerat sapiente esse sequi dolorum! Atque, facilis. Soluta explicabo ipsum libero!</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis minus velit totam sed hic quod dolorum, doloremque tempora a eius placeat! Adipisci ex quod sapiente eum aliquid dignissimos nihil odio non, saepe ratione! Odio ducimus aut ea dicta commodi, ullam dolores veniam sit dolorem, voluptas expedita ut sequi ab consectetur est repudiandae omnis reiciendis et quo. Perspiciatis possimus corrupti magni tenetur omnis voluptatum ab fugit accusamus quidem esse. Sapiente, officia!</p>
-            <img src={highwayPhoto} alt="highway"/>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A numquam placeat, hic repellat omnis iure tempora, sed recusandae ipsum nostrum sunt expedita temporibus quis corporis iste obcaecati neque cumque modi deserunt maxime eveniet ab dicta? Laborum nobis doloremque eveniet at veniam dolorum, dolores tempora nostrum, unde laudantium minima quasi modi.</p>
-            <h2 className="blog-subtitle">3. Another subtitle</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum corrupti molestiae blanditiis esse quaerat, excepturi autem eius accusantium veniam ipsam voluptas fugiat quibusdam, aspernatur ea ad molestias officiis numquam a soluta iusto deserunt? Quia commodi obcaecati, quidem excepturi molestiae debitis!</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad quis vel, nesciunt provident ab rerum quod fuga voluptatum? Recusandae architecto corrupti magni ullam vero itaque voluptas magnam beatae temporibus voluptates inventore, in aliquid quo obcaecati quas illo reprehenderit distinctio dolorum dolorem voluptatem! Similique dolore, sequi in atque officiis saepe temporibus, amet voluptates itaque sit aperiam provident, possimus obcaecati fugiat aut!</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe deserunt quisquam voluptatum, omnis illo nulla eveniet aliquid eius voluptatibus itaque animi vel reiciendis architecto magni perferendis atque iusto. Voluptate hic quod quae quas error dolores aperiam iure magnam laboriosam aliquid, in odio sed earum perferendis minus maxime ex necessitatibus aspernatur. Corrupti, facere. Cumque, illum dignissimos nobis dolore autem delectus doloribus unde, facilis quidem voluptas suscipit facere laudantium dicta aliquid, in sunt provident qui assumenda praesentium voluptatum doloremque maiores. Modi iste minima eveniet blanditiis sequi esse necessitatibus ipsam voluptatem reiciendis odio.</p>
+            <h2 className="blog-subtitle">- Why UX is so important</h2>
+            <p>Lately, the focus of product creation has shifted to user centered design. Gone are the days when a pretty UI was all you needed to attract clients on the web. The focus was mainly on the aesthetics and branding rather than how the user would feel about it. This is because, they centered on what looked good back then, and what the clients wanted.</p>
+            <p>But the web is changing, it has become more complex and loaded with features that must bear great user experience design by all means. Also the mediums through which we experience the web has expanded - to mobile devices, multiple browsers, and various types of internet connections.</p>
+            <p>No matter what the factors, the only way to stand in the market is by taking the user into consideration for your product.</p>
             </div>
             <div className="blog-footer">
                 <div className="footer-media">
                     <p>Enjoyed the read? share it for friends to see</p>
                     <div className="media-links">
-                    <FacebookButton className="social-button" url={"https://portfolio-11585.web.app/"} appId={"209127063984746"}>
+                    <FacebookButton className="social-button" url={"https://blog-6a15f.web.app/what-is-ux-and-why-is-it-so-important"} appId={"209127063984746"}>
                     <div  className="twitter"></div>
                     </FacebookButton>
                     <div onClick={pasteToClipboard}  className="copy-link blog-link">
                     </div>
-                    <LinkedInButton className="social-button" url={"https://portfolio-11585.web.app/"} appId={"77kemmicouurck"}>
+                    <LinkedInButton className="social-button" url={"https://blog-6a15f.web.app/what-is-ux-and-why-is-it-so-important"} appId={"77kemmicouurck"}>
                     <div  className="linkedin">
                     </div>
                     </LinkedInButton>

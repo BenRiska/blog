@@ -105,12 +105,17 @@ function App() {
       <Landing playMusic={playMusic} landAnimation={autoLandAnimation}/>
       {/* main page */}
       <div className="landing-z">
-        {/* absolute positioned icons */}
-        <div className="logo">
-          <img src={darkMode ? darkIcon : whiteIcon} alt="main page icon" className="white-icon"/>
-          <img src={darkMode ? darkSoundIcon : soundIcon} onClick={() => setMusic(!music)} alt="main page icon" className="sound-icon"/>
-        </div>
+        {/* absolute positioned properties */}
+        {/* top bar */}
         <audio loop className="piano" src={pianoMusic}></audio>
+        <div className="top-bar">
+          <div className="logo">
+            <img src={darkMode ? darkIcon : whiteIcon} alt="main page icon" className="white-icon"/>
+            <img src={darkMode ? darkSoundIcon : soundIcon} onClick={() => setMusic(!music)} alt="main page icon" className="sound-icon"/>
+          </div>
+
+          <span className="say-hi static-link"><a rel="noreferrer" target="_blank" href="https://www.linkedin.com/in/ben-taylor-tech/">say hi.</a> </span>
+        </div>
 
         <div className="socials">
             <a rel="noreferrer" target="_blank" href="https://www.instagram.com/featurefield/?hl=en" className="insta">
@@ -121,20 +126,21 @@ function App() {
             </a>
         </div>
 
-      <span className="say-hi static-link"><a rel="noreferrer" target="_blank" href="https://portfolio-11585.web.app/">say hi.</a> </span>
+        {/* bottom bar */}
+        <div className="bottom-bar">
+          <span className="portfolio static-link">
+              <a rel="noreferrer" target="_blank" href="https://portfolio-11585.web.app/">portfolio.</a>
+          </span>
 
-        <span className="portfolio static-link">
-            <a rel="noreferrer" target="_blank" href="https://portfolio-11585.web.app/">portfolio.</a>
-        </span>
-
-        <span className="github static-link">
-            <a rel="noreferrer" target="_blank" href="https://github.com/BenRiska">github.</a>
-        </span>
+          <span className="github static-link">
+              <a rel="noreferrer" target="_blank" href="https://github.com/BenRiska">github.</a>
+          </span>
+        </div>
 
         {/* main content - handled by router*/}
 
         <Switch>
-            <Route path="/how-to-be-the-best-at-everything">
+            <Route path="/what-is-ux-and-why-is-it-so-important">
                 <Blog1 darkMode={darkMode} toggleDarkMode={toggleDarkMode} showBlogAnimation={showBlogAnimation} removeBlogAnimation={removeBlogAnimation}/>
             </Route>
 

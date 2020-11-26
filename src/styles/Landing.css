@@ -10,8 +10,8 @@
 
 .landing-icon {
   position: absolute;
-  top: 2.5rem;
-  left: 6vh;
+  top: 2vh;
+  left: 2vh;
   height: 50px;
 }
 
@@ -54,10 +54,6 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .landing-icon {
-    left: 1.5rem;
-  }
-
   .landing-text {
     display: none;
   }
@@ -76,5 +72,7 @@
 @media only screen and (max-width: 680px) {
   .landing-icon {
     height: 40px;
+    top: 1.5vh;
+    left: 1vh;
   }
 }

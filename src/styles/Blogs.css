@@ -1,7 +1,7 @@
 .blogs {
   position: absolute;
-  max-height: 91vh;
-  top: 3vh;
+  max-height: 92vh;
+  top: 0;
   left: 50%;
   width: 80vw;
   max-width: 1200px;
@@ -13,7 +13,7 @@
 .blog-toggle {
   display: flex;
   justify-content: space-between;
-  height: 6vh;
+  height: 8vh;
   align-items: center;
   position: relative;
   z-index: 1;
@@ -100,7 +100,7 @@
 
 @media only screen and (max-width: 1600px) {
   .blogs {
-    max-width: 70vw;
+    max-width: 80vw;
   }
 }
 
@@ -116,13 +116,16 @@
 
 @media only screen and (max-width: 800px) {
   .blogs {
-    max-width: 90vw;
+    max-width: 95vw !important;
+    width: 85vw;
   }
 
   .blog-topics > span {
     font-size: 1rem;
   }
+}
 
+@media only screen and (max-width: 650px) {
   .small-screen {
     display: none;
   }

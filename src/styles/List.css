@@ -33,20 +33,6 @@
   place-content: center;
 }
 
-.list > span {
-  display: block;
-  margin: 5rem 0;
-  font-size: 18px;
-  color: rgba(0, 0, 0, 0.4);
-  text-decoration: line-through;
-  opacity: 0;
-  transform: translatey(30px);
-}
-
-.list > span > img {
-  margin-right: 10px;
-}
-
 @media only screen and (max-width: 1000px) {
   .list > div > h1 {
     font-size: 1.1rem;
@@ -57,8 +43,19 @@
   }
 }
 
+@media only screen and (max-width: 800px) {
+  .list > div {
+    flex-direction: column;
+  }
+
+  .list > div > span {
+    place-content: inherit;
+    padding-top: 0.7rem;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .list > div > h1 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }

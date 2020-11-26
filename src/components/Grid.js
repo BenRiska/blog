@@ -13,7 +13,7 @@ function Grid({blogs, handleBlogSelection}) {
                                 <p className="categories">coming soon</p>
                             </div>
                 } else{  
-                return <div onClick={() => handleBlogSelection(title.id,  "how-to-be-the-best-at-everything")} data-index={title.id} className="grid-item">
+                return <div onClick={() => handleBlogSelection(title.id,  title.url)} data-index={title.id} className="grid-item">
                             <h1>{title.title}</h1>
                             <span className="loader-bar"><span></span></span>
                             <p className="categories">{title.categories.join(", ")}.</p>

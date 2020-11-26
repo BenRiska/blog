@@ -7,6 +7,7 @@
   --blog-text: 22px;
   --blog-title-text: 36px;
   --blog-subtitle-text: 26px;
+  --blog-subtitle-small-text: 26px;
   --blog-padding: 1.4rem 0;
   --border-color: rgba(0, 0, 0, 0.1);
 }
@@ -17,18 +18,26 @@
   right: 2rem;
 }
 
-.share {
-  display: none;
-  top: 2vh;
-  right: 3vw;
+.top-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1vw;
+  align-items: center;
 }
 
-.share > img {
-  height: 20px;
-}
-
-.contact-exit > img {
-  height: 25px;
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1vw;
+  align-items: center;
 }
 
 body {
@@ -53,9 +62,6 @@ body {
 }
 
 .logo {
-  position: absolute;
-  top: 3vh;
-  left: 2vw;
   z-index: 5;
 }
 
@@ -75,33 +81,14 @@ body {
   cursor: url(./assets/close-sound.svg), default !important;
 }
 
-.resizer {
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  background-color: #f2da87;
-  z-index: 5;
-  display: grid;
-  place-content: center;
-}
-
-.resizer > p {
-  font-weight: 550;
-  font-size: 1.4rem;
-}
-
 .static-link {
-  position: absolute;
   font-size: 1rem;
   font-weight: 500;
-  padding: 1rem;
   z-index: 5;
 }
 
 .say-hi {
-  top: 3vh;
-  right: 1vw;
+  position: relative;
   cursor: url(./assets/hand.svg), default !important;
   color: var(--normal-text-color);
 }
@@ -115,7 +102,7 @@ body {
 .say-hi:hover::after {
   content: "don't be shy";
   position: absolute;
-  left: -130%;
+  left: -230%;
   color: var(--normal-text-color);
   transition: all 0.3s ease;
   animation: link-animation 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
@@ -123,8 +110,7 @@ body {
 }
 
 .portfolio {
-  bottom: 3vh;
-  left: 1vw;
+  position: relative;
   cursor: url(./assets/left-arrow.svg), default !important;
 }
 
@@ -137,15 +123,14 @@ body {
 .portfolio:hover::after {
   content: "view my work";
   position: absolute;
-  right: -110%;
+  right: -170%;
   animation: link-animation 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
     forwards running;
   color: var(--normal-text-color);
 }
 
 .github {
-  bottom: 3vh;
-  right: 1vw;
+  position: relative;
   cursor: url(./assets/right-arrow.svg), default !important;
 }
 
@@ -158,7 +143,7 @@ body {
 .github:hover::after {
   content: "view my code";
   position: absolute;
-  left: -130%;
+  left: -230%;
   transition: all 0.3s ease;
   animation: link-animation 1s cubic-bezier(0.25, 0.8, 0.25, 1) 0s 1 normal
     forwards running;
@@ -184,7 +169,7 @@ body {
 .socials {
   position: absolute;
   top: 38vh;
-  left: 3rem;
+  left: 1vw;
   z-index: 5;
 }
 
@@ -303,66 +288,23 @@ body {
   .socials {
     display: none;
   }
-
-  .say-hi,
-  .github {
-    right: 3vw;
-  }
-
-  .portfolio {
-    left: 3vw;
-  }
 }
 
 @media only screen and (max-width: 1000px) {
-  .say-hi,
-  .github {
-    right: 1vw;
+  .sound-icon {
+    display: none;
   }
 
   .portfolio,
+  .say-hi,
   .github {
-    bottom: 1rem;
-  }
-
-  .say-hi {
-    top: 1rem;
-  }
-
-  .white-icon {
-    left: 1.5rem;
-    top: 1rem;
-  }
-
-  .portfolio {
-    left: 1vw;
-  }
-
-  .sound-icon {
     display: none;
   }
 }
 
 @media only screen and (max-width: 800px) {
-  .say-hi,
-  .github {
-    display: none;
-  }
-
-  .portfolio {
-    display: none;
-  }
-
   .cursor {
     display: none;
-  }
-
-  .share {
-    display: initial;
-  }
-
-  .logo {
-    top: 2vh;
   }
 }
 
@@ -376,5 +318,9 @@ body {
 
   .white-icon {
     height: 40px;
+  }
+
+  .top-bar {
+    padding: 0 2vw;
   }
 }

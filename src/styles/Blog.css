@@ -15,7 +15,7 @@
 }
 
 .options {
-  height: 10vh;
+  height: 8vh;
   display: flex;
   justify-content: space-between;
   position: sticky;
@@ -28,7 +28,7 @@
 }
 
 .back {
-  opacity: 0.4;
+  opacity: 0.4 !important;
   display: flex;
   align-items: center;
   font-size: 1.1rem;
@@ -137,7 +137,7 @@
 }
 
 .blog-content {
-  max-height: 90vh;
+  max-height: 92vh;
   overflow: scroll;
 }
 
@@ -185,6 +185,12 @@
   padding: 2rem 0;
 }
 
+.blog-subtitle-small {
+  font-size: var(--blog-subtitle-small-text);
+  font-weight: 500;
+  padding: 0.5rem 0;
+}
+
 .blog-body {
   opacity: 0;
   transform: translatey(30px);
@@ -198,12 +204,13 @@
 
 .blog-body > ul {
   list-style: none;
+  padding-left: 0.5rem;
 }
 
 .blog-body > ul > li {
   font-size: var(--blog-text);
-  padding: 1rem 0;
-  opacity: 0.9;
+  padding: 1.8rem 0;
+  opacity: 0.8;
 }
 
 .blog-body > ul > li > span {

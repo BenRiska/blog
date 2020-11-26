@@ -95,22 +95,22 @@ export const showContents = () => {
 
 
 export const openDropdownAnimation = () => {tl.to(".underline", {
-    duration: .4,
+    duration: .7,
     width: "100px",
     height: "2px",
-    ease: "expo.inOut"
+    ease: "power1.out"
 }).to(".topics", {
-    duration: .3,
+    duration: .7,
     height: "160px",
-    ease: "expo.inOut"
+    ease: "power1.out"
 })}
 
 export const closeDropdownAnimation = () => {tl.to(".topics", {
-    duration: .3,
+    duration: .5,
     height: "0",
-    ease: "expo.inOut"
+    ease: "expo.inout"
 }).to(".underline", {
-    duration: .2,
+    duration: .4,
     height: "1px",
     width: "100%",
     ease: "expo.inOut"
@@ -138,7 +138,7 @@ export const removeGridItems = (setList) => {tl.to(".grid-item", {
       onComplete: setList
 })}
 
-export const showListItems = () => {tl.to(".list-item, .list > span", {
+export const showListItems = () => {tl.to(".list-item", {
     duration: 1,
     opacity: 1,
     y: 0,
@@ -148,7 +148,7 @@ export const showListItems = () => {tl.to(".list-item, .list > span", {
       }
 })}
 
-export const removeListItems = (setGrid) => {tl.to(".list > span, .list-item", {
+export const removeListItems = (setGrid) => {tl.to(".list-item", {
     duration: 1,
     opacity: 0,
     y: -30,

@@ -13,16 +13,12 @@ function List({blogs, handleBlogSelection}) {
                     </div>
                 }
                 else{
-                    return <div key={title.id} onClick={() => handleBlogSelection(title.id, "how-to-be-the-best-at-everything")} data-index={title.id} className="list-item">
+                    return <div key={title.id} onClick={() => handleBlogSelection(title.id, title.url)} data-index={title.id} className="list-item">
                     <h1>{title.title}</h1>
                     <span className="length">{title.duration} min read</span>
                     </div>
                 }
             })}
-            <span>
-                <img src={leftArrowIcon} alt="arrow icon"/>
-                older
-            </span>
         </div>
     )
 }
